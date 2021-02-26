@@ -1,10 +1,14 @@
 import React from "react"
 import { Route } from "react-router-dom"
 import { Home } from "./Home"
-import { AnimalCard } from "./animal/AnimalCard"
-import { LocationCard } from "./location/LocationCard"
-import { EmployeeCard } from "./employee/EmployeeCard"
-import { CustomerCard } from "./customer/CustomerCard"
+import { AnimalProvider } from "./animal/AnimalProvider"
+import { AnimalList } from "./animal/AnimalList"
+import { CustomerProvider } from "./customer/CustomerProvider"
+import { CustomerList } from './customer/CustomerList'
+import { EmployeeProvider } from './employee/EmployeeProvider'
+import { EmployeeList } from './employee/EmployeeList'
+import { LocationProvider } from './location/LocationProvider'
+import { LocationList } from './location/LocationList'
 
 export const ApplicationViews = () => {
     return (
@@ -16,21 +20,32 @@ export const ApplicationViews = () => {
             </Route>
 
             {/* Render the animal list when http://localhost:3000/animals */}
-            <Route path="/animals">
-                <AnimalCard />
-            </Route>
-            {/* Render the animal list when http://localhost:3000/locations */}
-            <Route path="/locations">
-                <LocationCard />
-            </Route>
-            {/* Render the animal list when http://localhost:3000/employess */}
-            <Route path="/employees">
-                <EmployeeCard />
-            </Route>
-            {/* Render the animal list when http://localhost:3000/customers */}
-            <Route path="/customers">
-                <CustomerCard />
-            </Route>
+            <AnimalProvider>
+                <Route exact path="/animals">
+                    <AnimalList />
+                </Route>
+            </AnimalProvider>
+            {/* Note that the <AnimalList> component is a child of the <AnimalProvider> component. It is crucial that you wrap components that need data with the provider component that exposes that data in JSX. You can wrap a component in as many providers as needed. */}
+
+            {/* Render the location list when http://localhost:3000/locations */}
+            <LocationProvider>
+                <Route exact path="/locations">
+                    <LocationList />
+                </Route>
+            </LocationProvider>
+            {/* Render the employee list when http://localhost:3000/employess */}
+            <EmployeeProvider>
+                <Route exact path="/employees">
+                    <EmployeeList />
+                </Route>
+            </EmployeeProvider>
+            {/* Render the customer list when http://localhost:3000/customers */}
+            <CustomerProvider>
+                <Route exact path="/customers">
+                    <CustomerList />
+                </Route>
+            </CustomerProvider>
         </>
     )
 }
+            

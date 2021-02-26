@@ -1,10 +1,5 @@
 import React from "react";
 
-import "./animal/Animal.css"
-import './customer/Customer.css'
-import './employee/Employee.css'
-import './location/Location.css'
-
 export const Home = () => (
     <>
         <h2>Nashville Kennels</h2>
