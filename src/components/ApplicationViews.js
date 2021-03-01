@@ -15,6 +15,7 @@ export const ApplicationViews = () => {
         <>
             {/* Render the location list when http://localhost:3000/ */}
             {/* exact is needed on the first route, otherwise it will also match the other routes, and the Home will render for every route. */}
+            
             <Route exact path="/">
                 <Home />
             </Route>
@@ -48,4 +49,3 @@ export const ApplicationViews = () => {
         </>
     )
 }
-            
