@@ -8,6 +8,7 @@ import { CustomerProvider } from "./customer/CustomerProvider"
 import { CustomerList } from './customer/CustomerList'
 import { EmployeeProvider } from './employee/EmployeeProvider'
 import { EmployeeList } from './employee/EmployeeList'
+import { EmployeeForm } from './employee/EmployeeForm'
 import { LocationProvider } from './location/LocationProvider'
 import { LocationList } from './location/LocationList'
 
@@ -44,9 +45,14 @@ export const ApplicationViews = () => {
             </LocationProvider>
             {/* Render the employee list when http://localhost:3000/employess */}
             <EmployeeProvider>
-                <Route exact path="/employees">
-                    <EmployeeList />
-                </Route>
+                <LocationProvider>
+                    <Route exact path="/employees">
+                        <EmployeeList />
+                    </Route>
+                    <Route exact path="/employees/create">
+                        <EmployeeForm />
+                    </Route>
+                </LocationProvider>
             </EmployeeProvider>
             {/* Render the customer list when http://localhost:3000/customers */}
             <CustomerProvider>
