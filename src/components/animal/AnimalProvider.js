@@ -12,6 +12,7 @@ export const AnimalProvider = (props) => {
 
     // Next, you will use the useState() hook to define a variable that holds the state of the component, and a function that updates it.
     const [animals, setAnimals] = useState([])
+    const [ searchTerms, setSearchTerms ] = useState("")
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals")
@@ -62,7 +63,7 @@ export const AnimalProvider = (props) => {
     */
     return (
         <AnimalContext.Provider value={{
-            animals, getAnimals, addAnimal, getAnimalById, releaseAnimal, updateAnimal
+            animals, getAnimals, addAnimal, getAnimalById, releaseAnimal, updateAnimal, searchTerms, setSearchTerms
         }}>
             {props.children}
         </AnimalContext.Provider>
